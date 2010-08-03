@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "assert-random.gemspec",
      "lib/assert-random.rb",
      "test/helper.rb",
      "test/test_assert-random.rb"
