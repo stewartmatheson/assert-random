@@ -1,16 +1,25 @@
 = assert-random
 
-Adds an assert_random assertion to test/unit
+Assert random is a simple gem that extends the test/unit assertions to include an assert-random test. Assert random works like any other assertion and accepts a block of code. Assert random checks this block of code records the results of the output. The out put is then checked for the following...
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+* Identical results
+* Sequences of numbers (eg... 1 2 3 4 or... 10 20 30 etc)
+
+Usage(Will pass):
+
+   def test_something
+      assert_random do
+         rand(1000)
+      end
+   end
+   
+Usage(Will fail):
+
+   def test_something_else
+      assert_random do
+         1000
+      end
+   end
 
 == Copyright
 
