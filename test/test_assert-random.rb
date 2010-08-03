@@ -34,15 +34,33 @@ class TestAssertRandom < Test::Unit::TestCase
   end
   
   
-=begin
   def test_fails_if_results_are_in_order
     assert_raise Test::Unit::AssertionFailedError do
       counter = 0
       assert_random do
-        counter += 1
+        counter =+ 1
       end
     end
   end
-=end
-  
+
+
+  def test_fails_if_results_are_in_order_by_tens
+    assert_raise Test::Unit::AssertionFailedError do
+      counter = 0
+      assert_random do
+        counter =+ 10
+      end
+    end
+  end
+
+
+  def test_fails_if_results_are_in_order_by_one_point_fours
+    assert_raise Test::Unit::AssertionFailedError do
+      counter = 0
+      assert_random do
+        counter =+ 1.4
+      end
+    end
+  end
+
 end

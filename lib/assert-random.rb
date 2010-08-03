@@ -8,33 +8,43 @@ module AssertRandom
           results.push yield
         end
         assert_block("2 or more values match") { !same_values? results } 
-        #assert_block("results are in a sequence") { !in_sequence? results } 
+        assert_block("Results are in a sequence") { !in_sequence? results } 
       end
     end
     
     
     private 
     def same_values?(results)
-      last_result = results.shift
-      results.each do |r|
-        return true if(last_result == r)
+      results.each do
+        last_result = results.shift
+        results.each do |r|
+          return true if(last_result == r)
+        end
       end
       false
     end
     
-=begin  
+
     def in_sequence?(results)
-      last_result = results.shift
-      diff = last_result - results.first
-      results.each do |r|
-        current_diff = r - last_result
-        return false if(diff != current_diff)
-        last_result = r
+      differences = Array.new
+      results.each do
+        last_result = results.shift
+        results.each do |r|
+          differences.push last_result - r
+        end
       end
-      true
+      sorted_difference = {}
+      differences.each do |d|
+        if sorted_difference.has_key? d
+          sorted_difference[d] += 1
+        else
+          sorted_difference[d] = 1
+        end 
+      end
+      return sorted_difference.size < 1
     end 
-=end
-    
+
+
   end
 end
 
