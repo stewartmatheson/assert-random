@@ -1,3 +1,5 @@
+require 'test/unit'
+
 module AssertRandom
   module AssertionMixins
     
