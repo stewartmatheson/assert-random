@@ -1,6 +1,6 @@
 = assert-random
 
-Description goes here.
+Adds an assert_random assertion to test/unit
 
 == Note on Patches/Pull Requests
  
@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 Stewart. See LICENSE for details.
+Copyright (c) 2010 Stewart Matheson. See LICENSE for details.
