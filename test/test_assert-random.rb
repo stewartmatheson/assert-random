@@ -62,5 +62,42 @@ class TestAssertRandom < Test::Unit::TestCase
       end
     end
   end
+  
+  
+  def test_tolerance_with_random
+    assert_nothing_raised do
+      assert_random :tolerance => 5 do
+        rand(1000)
+      end
+    end
+  end
+  
+  
+  def test_tolerance_with_fixed_number_set
+    numbers = Array.new
+    
+    2.times do
+      numbers.push 10
+    end
+    
+    8.times do
+      numbers.push rand(9)
+    end
+    
+    i = -1
+    assert_raise Test::Unit::AssertionFailedError do
+      assert_random :tolerance => 2 do
+        i =+ 1
+        numbers[i]
+      end
+    end
+  end
 
+  def test_must_pass_block
+    assert_raise Test::Unit::AssertionFailedError do
+      assert_random
+    end
+  end
+  
+  
 end

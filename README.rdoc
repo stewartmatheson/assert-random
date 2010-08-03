@@ -21,6 +21,20 @@ Usage(Will fail):
       end
    end
 
+== Tolerance
+
+Random numbers and results are hard to test. If your generating with in a small range of numbers say 1 to 10 then you can't guarantee that the same number will not come up twice. This is despite the generator working correctly. For cases like this assert-random supports the tolerance option. Tolerance allows the test to tolerate more than one instance of a number from a narrow range.
+
+Tolerance Usage:
+
+   def test_tolerance
+      assert_random :tolerance => 5 do
+         rand(10)
+      end
+   end
+
+The above example will pass even if the same number comes up 4 times.
+
 == Copyright
 
 Copyright (c) 2010 Stewart Matheson. See LICENSE for details.
