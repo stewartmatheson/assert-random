@@ -6,11 +6,12 @@ module AssertRandom
     def assert_random(options = {})
       _wrap_assertion do
         assert_block("assert needs to be called with a block.") { block_given? }  
-        configuration = { :tolerance => 1 }
+        configuration = { :tolerance => 1, :iterations => 10 }
         configuration.update(options) if options.is_a?(Hash)        
+        assert_block("No point running with an iteration count of 1") { configuration[:iterations] == 1 } 
         
         results = Array.new
-        10.times do
+        configuration[:iterations].times do
           results.push yield
         end
         

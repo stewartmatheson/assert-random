@@ -99,5 +99,12 @@ class TestAssertRandom < Test::Unit::TestCase
     end
   end
   
+  def test_iteration_gets_passed
+    assert_nothing_raised do
+      assert_random :iterations => 5 do
+        rand(1000)
+      end
+    end
+  end
   
 end
