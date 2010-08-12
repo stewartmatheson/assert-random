@@ -93,15 +93,26 @@ class TestAssertRandom < Test::Unit::TestCase
     end
   end
 
+
   def test_must_pass_block
     assert_raise Test::Unit::AssertionFailedError do
       assert_random
     end
   end
   
+  
   def test_iteration_gets_passed
     assert_nothing_raised do
       assert_random :iterations => 5 do
+        rand(1000)
+      end
+    end
+  end
+  
+  
+  def test_iteration_and_tolerance_get_passed
+    assert_nothing_raised do
+      assert_random :iterations => 5, :tolerance => 10 do
         rand(1000)
       end
     end

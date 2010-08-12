@@ -8,6 +8,7 @@ module AssertRandom
         assert_block("assert needs to be called with a block.") { block_given? }  
         configuration = { :tolerance => 1, :iterations => 10 }
         configuration.update(options) if options.is_a?(Hash)        
+        puts configuration.inspect
         assert_block("No point running with an iteration count of 1") { configuration[:iterations] == 1 } 
         
         results = Array.new
