@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stewart Matheson"]
-  s.date = %q{2010-08-03}
+  s.date = %q{2010-08-12}
   s.description = %q{This gem adds an assert random assertion that will allow the testing of random sequences. This is handy for game development and anyone working with random numbers with out a way of testing them.}
   s.email = %q{stew@rtmatheson.com}
   s.extra_rdoc_files = [
