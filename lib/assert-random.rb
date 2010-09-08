@@ -7,9 +7,8 @@ module AssertRandom
       _wrap_assertion do
         assert_block("assert needs to be called with a block.") { block_given? }  
         configuration = { :tolerance => 1, :iterations => 10 }
-        configuration.update(options) if options.is_a?(Hash)        
-        puts configuration.inspect
-        assert_block("No point running with an iteration count of 1") { configuration[:iterations] == 1 } 
+        configuration.merge!(options) if options.is_a?(Hash)        
+        assert_block("No point running with an iteration count of 1") { !only_iterating_once? configuration[:iterations] } 
         
         results = Array.new
         configuration[:iterations].times do
@@ -23,6 +22,10 @@ module AssertRandom
     
     
     private 
+    def only_iterating_once?(iterations)
+      iterations <= 1
+    end 
+    
     def same_values?(results, tolerance)
       same_value_counter = 0
       results.each do

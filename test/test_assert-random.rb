@@ -118,4 +118,12 @@ class TestAssertRandom < Test::Unit::TestCase
     end
   end
   
+  def test_can_not_iterate_once
+    assert_raise Test::Unit::AssertionFailedError do
+      assert_random :iterations => 1 do
+        rand(1000)
+      end
+    end
+  end
+  
 end
