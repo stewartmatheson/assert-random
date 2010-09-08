@@ -35,6 +35,16 @@ Tolerance Usage:
 
 The above example will pass even if the same number comes up 4 times.
 
+== Iterations
+
+You can now set the amount of times that the passed block will iterate. This is handy when testing numbers from different ranges. It is used like so. Warning: assert random will throw exceptions if you pass 1. There is no point in only iterating once.
+
+   def test_iterations
+      assert_random :iterations => 2 do
+         rand(10)
+      end
+   end
+
 == Copyright
 
 Copyright (c) 2010 Stewart Matheson. See LICENSE for details.
